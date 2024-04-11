@@ -14,7 +14,7 @@ RUN microdnf install -y --nodocs --setopt=install_weak_deps=0 npm
 WORKDIR /app
 COPY ./ ./
 RUN NODE_ENV=production && \
-    npm ci --registry ${NPM_REGISTRY} && \
+    npm i && \
     rm -rf stories && \
     npm run build
 
