@@ -13,10 +13,15 @@ FROM base AS builder
 RUN microdnf install -y --nodocs --setopt=install_weak_deps=0 npm
 WORKDIR /app
 COPY ./ ./
-RUN NODE_ENV=production && \
-    npm i && \
-    rm -rf stories && \
-    npm run build
+# RUN NODE_ENV=production && \
+#     npm i && \
+#     rm -rf stories && \
+#     npm run build
+
+RUN NODE_ENV=production
+RUN npm i
+RUN rm -rf stories
+RUN npm run build
 
 
 FROM base AS runner
